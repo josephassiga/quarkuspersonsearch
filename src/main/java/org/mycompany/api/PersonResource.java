@@ -22,6 +22,7 @@ public class PersonResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<PersonEntity> getAll() {
+        LOG.info("GET All Person : ");
         return PersonEntity.listAll();
     }
 
@@ -29,6 +30,7 @@ public class PersonResource {
     @Path(("/eyes/{color}"))
     @Produces(MediaType.APPLICATION_JSON)
     public List<PersonEntity> findByColor(final @PathParam(value = "color") String color) {
+        LOG.info( String.format("Find All Person with a color  : ", color));
         return PersonEntity.findByColor(color);
     }
 
@@ -36,6 +38,7 @@ public class PersonResource {
     @Path(("/birth/before/{year}"))
     @Produces(MediaType.APPLICATION_JSON)
     public List<PersonEntity> getBeforeYear(final @PathParam(value = "year") int year) {
+        LOG.info( String.format("GET All Person with a year  : ", year));
         return PersonEntity.getBeforeYear(year);
     }
 

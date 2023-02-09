@@ -13,7 +13,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 public class PersonEntity extends PanacheEntity {
 
     // The person's name
-    private String name;
+    public String name;
 
     // The person's birthdate
     public LocalDate birth;
