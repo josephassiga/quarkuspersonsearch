@@ -6,12 +6,10 @@ import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-@Entity
+@Entity(name = "Person")
 public class PersonEntity extends PanacheEntity {
 
     // The person's name
@@ -21,7 +19,7 @@ public class PersonEntity extends PanacheEntity {
     public LocalDate birth;
 
     // The person's eye color
-    @Enumerated(EnumType.STRING)
+    // @Enumerated(EnumType.STRING)
     @Column(length = 8)
     public String eyes;
 
@@ -30,6 +28,7 @@ public class PersonEntity extends PanacheEntity {
     }
 
     public static List<PersonEntity> getBeforeYear(final int year) {
-        return PersonEntity.<PersonEntity>streamAll().filter(p -> p.birth.getYear() <= year).collect(Collectors.toList());
+        return PersonEntity.<PersonEntity>streamAll().filter(p -> p.birth.getYear() <= year)
+                .collect(Collectors.toList());
     }
 }
